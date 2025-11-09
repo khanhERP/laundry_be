@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsx server/index.ts",
-    "build": "vite build --no-ts-check",
+    "build": "tsc",
     "start": "node dist/server/index.js"
   },
   "dependencies": {
@@ -53,12 +53,9 @@
     "connect-pg-simple": "^10.0.0",
     "cookie-parser": "^1.4.7",
     "date-fns": "^3.6.0",
-    "dotenv": "^17.2.1",
-    "drizzle-orm": "^0.39.1",
     "drizzle-zod": "^0.7.0",
     "embla-carousel-react": "^8.6.0",
     "escpos": "^3.0.0-alpha.6",
-    "express": "^4.21.2",
     "express-session": "^1.18.1",
     "framer-motion": "^11.13.1",
     "input-otp": "^1.4.2",
@@ -71,7 +68,6 @@
     "openai": "^5.21.0",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
-    "pg": "^8.16.3",
     "qrcode": "^1.5.4",
     "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
@@ -92,7 +88,11 @@
     "xlsx": "^0.18.5",
     "zod": "^3.24.2",
     "zod-validation-error": "^3.4.0",
-    "zustand": "^5.0.6"
+    "zustand": "^5.0.6",
+    "express": "^4.21.2",
+    "dotenv": "^17.2.1",
+    "drizzle-orm": "^0.39.1",
+    "pg": "^8.16.3"
   },
   "devDependencies": {
     "@replit/vite-plugin-cartographer": "^0.4.1",
