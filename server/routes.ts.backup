@@ -41,7 +41,7 @@ import {
   employees,
   purchaseReceiptDocuments,
   paymentMethods,
-} from "@shared/schema";
+} from "../shared/schema";
 import { initializeSampleData, db } from "./db";
 import { registerTenantRoutes } from "./tenant-routes";
 import {
@@ -762,7 +762,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const tenantDb = await getTenantDatabase(req);
       const database = tenantDb || db;
 
-      const { priceLists } = await import("@shared/schema");
+      const { priceLists } = await import("../shared/schema");
 
       const lists = await database
         .select()
@@ -786,7 +786,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const tenantDb = await getTenantDatabase(req);
       const database = tenantDb || db;
 
-      const { priceLists, priceListItems } = await import("@shared/schema");
+      const { priceLists, priceListItems } = await import("../shared/schema");
 
       const [priceList] = await database
         .select()
@@ -834,7 +834,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const tenantDb = await getTenantDatabase(req);
       const database = tenantDb || db;
 
-      const { priceLists, priceListItems, insertPriceListSchema, insertPriceListItemSchema } = await import("@shared/schema");
+      const { priceLists, priceListItems, insertPriceListSchema, insertPriceListItemSchema } = await import("../shared/schema");
 
       const { items, ...priceListData } = req.body;
 
@@ -892,7 +892,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const tenantDb = await getTenantDatabase(req);
       const database = tenantDb || db;
 
-      const { priceLists, priceListItems, insertPriceListSchema, insertPriceListItemSchema } = await import("@shared/schema");
+      const { priceLists, priceListItems, insertPriceListSchema, insertPriceListItemSchema } = await import("../shared/schema");
 
       const { items, ...priceListData } = req.body;
 
@@ -971,7 +971,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const tenantDb = await getTenantDatabase(req);
       const database = tenantDb || db;
 
-      const { priceLists } = await import("@shared/schema");
+      const { priceLists } = await import("../shared/schema");
 
       // Check if it's the default price list
       const [priceList] = await database

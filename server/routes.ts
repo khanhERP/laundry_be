@@ -42,7 +42,7 @@ import {
   purchaseReceiptDocuments,
   paymentMethods,
   generalSettings,
-} from "@shared/schema";
+} from "../shared/schema";
 import { initializeSampleData, db } from "./db";
 import { registerTenantRoutes } from "./tenant-routes";
 import {
@@ -75,7 +75,7 @@ import {
   type AuthRequest,
 } from "./auth-middleware";
 import cookieParser from "cookie-parser";
-import { priceListItems, priceLists } from "@shared/schema";
+import { priceListItems, priceLists } from "../shared/schema";
 
 // Helper function to get payment method display name
 function getPaymentMethodName(method: string | number): string {
@@ -534,7 +534,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const tenantDb = await getTenantDatabase(req);
         const database = tenantDb || db;
 
-        const { orderChangeHistory } = await import("@shared/schema");
+        const { orderChangeHistory } = await import("../shared/schema");
 
         const {
           orderId,
@@ -697,7 +697,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const tenantDb = await getTenantDatabase(req);
         const database = tenantDb || db;
 
-        const { orderChangeHistory } = await import("@shared/schema");
+        const { orderChangeHistory } = await import("../shared/schema");
 
         const history = await database
           .select()
@@ -1101,7 +1101,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const tenantDb = await getTenantDatabase(req);
       const database = tenantDb || db;
 
-      const { priceLists } = await import("@shared/schema");
+      const { priceLists } = await import("../shared/schema");
 
       const lists = await database
         .select()
@@ -1128,7 +1128,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const tenantDb = await getTenantDatabase(req);
         const database = tenantDb || db;
 
-        const { priceLists, priceListItems } = await import("@shared/schema");
+        const { priceLists, priceListItems } = await import("../shared/schema");
 
         const [priceList] = await database
           .select()
@@ -1185,7 +1185,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           priceListItems,
           insertPriceListSchema,
           insertPriceListItemSchema,
-        } = await import("@shared/schema");
+        } = await import("../shared/schema");
 
         const { items, ...priceListData } = req.body;
 
@@ -1250,7 +1250,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           priceListItems,
           insertPriceListSchema,
           insertPriceListItemSchema,
-        } = await import("@shared/schema");
+        } = await import("../shared/schema");
 
         const { items, ...priceListData } = req.body;
 
@@ -1330,7 +1330,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const tenantDb = await getTenantDatabase(req);
         const database = tenantDb || db;
 
-        const { priceLists } = await import("@shared/schema");
+        const { priceLists } = await import("../shared/schema");
 
         // Check if it's the default price list
         const [priceList] = await database
@@ -1446,7 +1446,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
         console.log(`💰 Fetching income vouchers for storeCode: ${storeCode}`);
 
-        const { incomeVouchers } = await import("@shared/schema");
+        const { incomeVouchers } = await import("../shared/schema");
 
         let query = database
           .select()
@@ -1480,7 +1480,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const database = tenantDb || db;
         const storeCode = req.user?.storeCode;
 
-        const { incomeVouchers } = await import("@shared/schema");
+        const { incomeVouchers } = await import("../shared/schema");
 
         const voucherData = {
           ...req.body,
@@ -1516,7 +1516,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const tenantDb = await getTenantDatabase(req);
         const database = tenantDb || db;
 
-        const { incomeVouchers } = await import("@shared/schema");
+        const { incomeVouchers } = await import("../shared/schema");
 
         const [updatedVoucher] = await database
           .update(incomeVouchers)
@@ -1555,7 +1555,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const tenantDb = await getTenantDatabase(req);
         const database = tenantDb || db;
 
-        const { incomeVouchers } = await import("@shared/schema");
+        const { incomeVouchers } = await import("../shared/schema");
 
         await database.delete(incomeVouchers).where(eq(incomeVouchers.id, id));
 
@@ -1582,7 +1582,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
         console.log(`💰 Fetching expense vouchers for storeCode: ${storeCode}`);
 
-        const { expenseVouchers } = await import("@shared/schema");
+        const { expenseVouchers } = await import("../shared/schema");
 
         let query = database
           .select()
@@ -1616,7 +1616,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const database = tenantDb || db;
         const storeCode = req.user?.storeCode;
 
-        const { expenseVouchers } = await import("@shared/schema");
+        const { expenseVouchers } = await import("../shared/schema");
 
         const voucherData = {
           ...req.body,
@@ -1652,7 +1652,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const tenantDb = await getTenantDatabase(req);
         const database = tenantDb || db;
 
-        const { expenseVouchers } = await import("@shared/schema");
+        const { expenseVouchers } = await import("../shared/schema");
 
         const [updatedVoucher] = await database
           .update(expenseVouchers)
@@ -1691,7 +1691,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const tenantDb = await getTenantDatabase(req);
         const database = tenantDb || db;
 
-        const { expenseVouchers } = await import("@shared/schema");
+        const { expenseVouchers } = await import("../shared/schema");
 
         await database
           .delete(expenseVouchers)
