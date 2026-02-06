@@ -2,7 +2,6 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 // import { setupVite, serveStatic, log } from "./vite";
-import 'module-alias/register';
 
 const app = express();
 
@@ -200,11 +199,6 @@ app.use((req, res, next) => {
       console.error("Error processing payment notification:", error);
       res.status(500).json({ error: "Failed to process notification" });
     }
-  });
-
-  // Default route
-  app.get("/", (req, res) => {
-    res.json({ message: "oke" });
   });
 
   // Start WebSocket server for popup signals
